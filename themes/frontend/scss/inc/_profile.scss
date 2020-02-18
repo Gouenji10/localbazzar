@@ -1,0 +1,39 @@
+body{
+	&.Dashboard{
+		.widget-account-menu .nav-tabs .nav-item .nav-link{
+			font-weight: 400;
+			&:after{
+				font-family:"FontAwesome";
+			}	
+		}
+		.verify-btn{
+			margin-right: 0.3125rem;
+		    margin-bottom: 0.3125rem;
+		    border-radius: 0.125rem;
+		    padding: 0.5rem 1rem;
+		    background-color: #f85c70;
+		    color: #ffffff;
+		    font-size: 0.875rem;
+		    font-weight: 400;
+		    text-transform: capitalize;
+		    -webkit-transition: all 0.3s ease-in-out;
+		    transition: all 0.3s ease-in-out;
+		}
+		.post-ad-box-layout1 .post-section .control-label{
+			font-weight:500;
+		}
+		.verified-btn{
+			margin-right: 0.3125rem;
+		    margin-bottom: 0.3125rem;
+		    border-radius: 0.125rem;
+		    padding: 0.5rem 1rem;
+		    background-color: #19b453;
+		    color: #ffffff;
+		    font-size: 0.875rem;
+		    font-weight: 400;
+		    text-transform: capitalize;
+		    -webkit-transition: all 0.3s ease-in-out;
+		    transition: all 0.3s ease-in-out;	
+		}
+	}
+}

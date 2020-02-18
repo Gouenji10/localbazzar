@@ -1,0 +1,80 @@
+body{
+	&.listing{
+		.widget-accordian{
+			.accordion-box{
+				.card{
+					.card-header{
+						.parent-list{
+							&:after {
+		    					font-family: "FontAwesome";
+							}
+						}		
+					}	
+				}  
+			}
+		}
+		.product-filter-heading .product-sorting .ordering-controller .ordering-btn:after {
+		    content: "\f107";
+		    font-family: "FontAwesome";
+		}
+		a.item-trending:after{
+			font-family: "FontAwesome";	
+		}
+		.inner-page-banner .breadcrumbs-area ul li:after{
+			font-family: "FontAwesome";		
+		}
+		.widget-accordian .accordion-box .card .card-body .sub-list li a:before{
+			font-family: "FontAwesome";			
+		}
+		
+	}
+}
+body{
+	&.singleListing{
+		.widget-safty-tip .safty-tip-content ul li:after {
+			font-family: 'FontAwesome';
+		}
+		.single-product-box-layout1 .product-info .product-content .item-details .tab-content .item-features .features-list li:after{
+			font-family: 'FontAwesome';
+		}
+		a.item-trending:after{
+			font-family: 'FontAwesome';
+		}
+		.inner-page-banner{
+			padding: 2rem 0 2rem;
+			.singleloop{
+				.owl-nav{
+				    position: absolute;
+				    top: 45%;
+				    width: 100%;
+				    
+				    button{
+					    background:rgba(0,0,0,0.5);
+					    width: 50px;
+					    height: 50px;
+					    border-radius: 50%;
+					    color: #fff;
+					    font-size: 4rem;
+					    transition: all ease-in-out 0.5s;
+					}
+				}
+				.owl-prev{
+				    float:left;
+				 }
+				.owl-next{
+				    float:right;
+				}
+			}	
+		}
+	}
+}
+body{
+	&.addListing{
+		.inner-page-banner .breadcrumbs-area ul li:after{
+			font-family: "FontAwesome";		
+		}
+		#file-upload{
+			display: none;
+		}
+	}
+}

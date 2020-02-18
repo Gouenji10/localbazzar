@@ -1,0 +1,53 @@
+body{
+	&.home{
+		#lb_slider .lb_slider-image {
+		    height: 300px;
+		    background: url(../img/banner/hero.jpg);
+		    background-position: 50%;
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    position: relative;
+		    &:before{
+		    	content: '';
+		    	display: block;
+		    	position: absolute;
+		    	background: rgba(0,0,0,0.6);
+		    	width: 100%;
+		    	height: 100%;
+		    }
+		    .search-box-layout1{
+		    	position: relative;
+		    }
+		}
+		.process-wrap-layout1{
+			background: url('../img/banner/process-bg.jpg');
+			.item-content{
+				ul{
+					li{
+						font-weight: 400;
+						&:before{
+							content: "\f178";
+							font-family: 'FontAwesome';
+						}
+					}
+				}
+			}
+		}
+		.counter-wrap-layout1.bg-attachment-fixed{
+			background: url('../img/banner/counter-bg.jpg');
+			background-attachment: fixed;
+		    background-repeat: no-repeat;
+		    background-position: center;
+		    background-size: cover;
+		    span.counter{
+		    	font-weight: 500;
+		    }
+		}
+	}
+	a.item-trending:after{
+		font-family: 'fontAwesome';
+	}
+}

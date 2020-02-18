@@ -1,0 +1,230 @@
+html,body{
+	font-family:$font-family;
+  	max-width: 100%
+}
+h1,h2,h3,h4,h5,h6,p{
+	font-family: $font-family;
+	font-weight: 500 !important;
+}
+input:focus,select:focus,textarea:focus,button:focus{
+    outline: none !important;
+    box-shadow:unset !important;
+}
+.login-wrapper{
+	position: fixed;
+    background: rgba(0,0,0,0.8);
+    height:100%;
+    width:100%;
+    z-index: 999;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease-in-out 0.5s;
+    &.show{
+    	opacity: 1;
+    	visibility: visible;
+    }
+}
+
+.login-container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 350px;
+	display: none;
+	height: 100%;
+	overflow: hidden;
+	background:#fff;
+	z-index: 999;
+	transform: translateX(100%);
+	-webkit-transform: translateX(100%);
+
+	.login_top{
+		display: flex;
+	    padding: 20px;
+	    border-bottom: 1px solid #ddd;
+	    margin-bottom: 20px;
+	    justify-content: space-between;
+		h3.item-title{
+			margin-bottom: 0;
+			text-transform:capitalize;
+			font-weight: 500;
+		}
+		.close-cart {
+			margin-left: auto;
+			i{
+				color: black;
+    			font-size: 18px;
+			}
+		}
+	}
+	
+	#login-form{
+		height:auto;
+		transition: all ease-in-out 0.5s;
+		&.hide{
+			height: 0;
+		    opacity: 0;
+		    visibility: visible;
+		}
+		#scLoginForm{
+			padding: 16px;
+			.submit-btn{
+				width: 100%;
+			}
+		}
+	}
+	#registerForm{
+		opacity: 0;
+		visibility: hidden;
+		transition:all ease-in-out 0.5s;
+		&.show{
+			opacity: 1;
+			visibility: visible;
+		}
+		#scRegisterForm{
+			padding: 16px;
+			.submit-btn{
+				width: 100%;
+			}
+		}
+	}
+
+}
+
+.selected {
+	animation: slide-in 0.5s forwards;
+	-webkit-animation: slide-in 0.5s forwards;
+}
+
+.dismiss {
+	animation: slide-out 0.5s forwards;
+	-webkit-animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-in {
+	0% {
+		-webkit-transform: translateX(100%);
+	}
+	100% {
+		-webkit-transform: translateX(0%);
+	}
+}
+
+@-webkit-keyframes slide-in {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes slide-out {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+@-webkit-keyframes slide-out {
+	0% {
+		-webkit-transform: translateX(0%);
+	}
+	100% {
+		-webkit-transform: translateX(100%);
+	}
+}
+#siteloaderWrapper{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease-in-out 0.2s;
+	&.show{
+		opacity: 1;
+		visibility: visible;
+		z-index: 9999;
+	}
+	.siteloader{
+		animation: rotate 1s infinite;  
+		height: 50px;
+		width: 50px;
+	}
+}
+
+
+.siteloader:before,
+.siteloader:after {   
+	border-radius: 50%;
+	content: '';
+	display: block;
+	height: 20px;  
+	width: 20px;
+}
+.siteloader:before {
+  animation: ball1 1s infinite;  
+  background-color: #cb2025;
+  box-shadow: 30px 0 0 #f8b334;
+  margin-bottom: 10px;
+}
+.siteloader:after {
+  animation: ball2 1s infinite; 
+  background-color: #00a096;
+  box-shadow: 30px 0 0 #97bf0d;
+}
+
+@keyframes rotate {
+  0% { 
+    -webkit-transform: rotate(0deg) scale(0.8); 
+    -moz-transform: rotate(0deg) scale(0.8);
+  }
+  50% { 
+    -webkit-transform: rotate(360deg) scale(1.2); 
+    -moz-transform: rotate(360deg) scale(1.2);
+  }
+  100% { 
+    -webkit-transform: rotate(720deg) scale(0.8); 
+    -moz-transform: rotate(720deg) scale(0.8);
+  }
+}
+
+@keyframes ball1 {
+  0% {
+    box-shadow: 30px 0 0 #f8b334;
+  }
+  50% {
+    box-shadow: 0 0 0 #f8b334;
+    margin-bottom: 0;
+    -webkit-transform: translate(15px,15px);
+    -moz-transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #f8b334;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes ball2 {
+  0% {
+    box-shadow: 30px 0 0 #97bf0d;
+  }
+  50% {
+    box-shadow: 0 0 0 #97bf0d;
+    margin-top: -20px;
+    -webkit-transform: translate(15px,15px);
+    -moz-transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #97bf0d;
+    margin-top: 0;
+  }
+}
