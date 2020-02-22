@@ -57,7 +57,7 @@
         </div>
         <div class="col-sm-9">
             <div class="form-group">
-                    <?php $type=array('Select Your Car Type','Sedan','Hatchback','MPV/minivan','SUV/4X4','CUV/Crossover','Pickup','Convertible/spyder/cabriolet','Station wagon/estate'); ?>
+                    <?php $type=array('Select Your MotorCycle Type','Standard','Cruiser','Sports','Dirt','Scooty'); ?>
                     <?php echo form_dropdown('type',$type,'',array('class'=>'form-control select-box
                     ')) ?>
             </div>
@@ -197,7 +197,7 @@
         </div>
         <div class="col-sm-9">
             <div class="form-group">
-                <?php $features=array('Power Window','Power Steering','Central Lock','Alloy Wheels','Keyless Remote Entry','Tubeless Tyres','Air Bags','Anti-lock Braking (ABS)','Air Conditioner - Manual','Air Conditioner - Automatic','Rear AC Vent','Steering Mounted Controls','Projected Headlight','Fog Lights','Electric Side Mirror (ORVM)','Push Engine Start Button','LCD Touchscreen Entertainment');?>
+                <?php $features=array('Electric Start','Alloy Wheels','Tubeless Tyres','Digital Display Panel','Projected Headlight','LED Tail Light','Front Disc Brake','Rear Disc Brake','Anti-lock Braking (ABS)','Mono Suspension','Split Seat','Low Fuel Indicator','Tripmeter');?>
                 <?php foreach ($features as $key =>$value):?>
                     <div class="form-check form-check-box">
                         <input class="form-check-input" type="checkbox" id="features-list<?php echo $key;?>" value="camera">

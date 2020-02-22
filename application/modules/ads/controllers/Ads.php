@@ -38,7 +38,11 @@ class Ads extends Front_Controller
 		->set('categories',$categories)
 		->set('page','addListing')
 		->build('add');
+	}
 
+	public function saveAd(){
+			print_r($this->input->post());
+			exit();
 	}
 
 	public function listingFilter(){
@@ -73,11 +77,10 @@ class Ads extends Front_Controller
 	}
 
 	public function ads_css(){
-		echo css('imageuploadify.min.css');
+		// echo css('imageuploadify.min.css');
 	}
 	public function ads_js(){
 		echo js('owl.carousel.min.js');
-		echo js('imageuploadify.js');
 		?>
 		<script type="text/javascript">
 			$(function(){
@@ -206,8 +209,6 @@ class Ads extends Front_Controller
 				        }
 				    }
 				});
-
-				$('input[type="file"]').imageuploadify();
 			});
 		</script>
 		<?php 

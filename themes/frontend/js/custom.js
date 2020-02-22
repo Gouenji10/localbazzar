@@ -1,4 +1,4 @@
-var siteUrl='http://localhost/codeigniter/';
+var siteUrl='http://localhost/localbazzar/';
 $(document).ready(function() {
 	$('#showFilePanel').click(function(event) {
 		if ($('.login-container').hasClass('dismiss')) {
@@ -156,5 +156,16 @@ $(document).ready(function() {
     	$.post(siteUrl+'ads/getFields/'+val,'',function(response){
     		$('.addListing').find('#productInformation').html(response);
     	});
+    })
+
+    // form submit
+
+    $('.addListing').find('#adsForm').on('submit',function(){
+    	$('#siteloaderWrapper').addClass('show');
+    	var action =$(this).attr('action');
+    	$.post(action,$(this).serialize(),function(response){
+
+    	});
+    	return false;
     })
 });

@@ -24,8 +24,8 @@
 <section class="section-padding-equal-70">
     <div class="container">
         <div class="post-ad-box-layout1 light-shadow-bg">
-            <div class="post-ad-form light-box-content">
-                <?php echo form_open_multipart(); ?>
+            <div class="post-ad-form light-box-content">                
+                <?php echo form_open_multipart('ads/saveAd',array('id'=>'adsForm')); ?>
                     <div class="post-section post-category">
                         <div class="post-ad-title">
                             <i class="fa fa-tags"></i>
@@ -109,9 +109,8 @@
                             </div>
                         </div>
                     </div>
-                    <div id="productInformation">
-                        
-                    </div>                    
+                    <div id="productInformation"></div>                    
+
                     <div class="post-section post-img">
                         <div class="post-ad-title">
                             <i class="fa fa-image"></i>
@@ -120,7 +119,7 @@
                         <div class="form-group">
                             <div class="img-gallery">
                                 <div class="img-upload">
-                                    <input type="file" id="file-upload" class="item-btn" name="avatar"accept="image/png, image/jpeg, image/jpg" multiple="multiple">
+                                    <input type="file" name='images[]'accept="image/png, image/jpeg, image/jpg" multiple>
                                 </div>
                                 <div class="img-upload-instruction alert alert-danger">
                                     <p>Recommended image size to (870x493)px</p>
@@ -263,7 +262,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>
