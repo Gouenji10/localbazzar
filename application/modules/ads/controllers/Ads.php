@@ -41,8 +41,18 @@ class Ads extends Front_Controller
 	}
 
 	public function saveAd(){
-			print_r($this->input->post());
-			exit();
+		// Count total files
+		$countfiles = count($_FILES['images']['name']);
+		// Looping all files
+		for($i=0;$i<$countfiles;$i++){
+			if(!empty($_FILES['images']['name'][$i])){
+				$file_name = $_FILES['images']['name'][$i];
+				$tmp = explode('.', $file_name);
+				$type = end($tmp);
+			    $base64 = 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents($_FILES["images"]["tmp_name"][$i]));
+				echo "<img src=".$base64." style='width:50%;'>";
+			}
+		}
 	}
 
 	public function listingFilter(){
@@ -77,10 +87,11 @@ class Ads extends Front_Controller
 	}
 
 	public function ads_css(){
-		// echo css('imageuploadify.min.css');
+		echo css('image-uploader.css');
 	}
 	public function ads_js(){
 		echo js('owl.carousel.min.js');
+		echo js('image-uploader.js');
 		?>
 		<script type="text/javascript">
 			$(function(){
@@ -209,6 +220,8 @@ class Ads extends Front_Controller
 				        }
 				    }
 				});
+
+				$('.input-images-1').imageUploader();
 			});
 		</script>
 		<?php 

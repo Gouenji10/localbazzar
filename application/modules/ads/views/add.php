@@ -118,8 +118,9 @@
                         </div>
                         <div class="form-group">
                             <div class="img-gallery">
-                                <div class="img-upload">
-                                    <input type="file" name='images[]'accept="image/png, image/jpeg, image/jpg" multiple>
+                                 <div class="input-field">
+                                    <label class="active">Photos</label>
+                                    <div class="input-images-1" style="padding-top: .5rem;"></div>
                                 </div>
                                 <div class="img-upload-instruction alert alert-danger">
                                     <p>Recommended image size to (870x493)px</p>
