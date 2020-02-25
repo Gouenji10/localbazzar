@@ -4,9 +4,16 @@
 /* Icons Font Face*/
 /* Base style */
 .image-uploader {
-    min-height: 10rem;
-    border: 1px solid #d9d9d9;
+    min-height: 18rem;
+    border: 2px dashed #d9d9d9;
     position: relative;
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #f85c70; 
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Style on hover */
@@ -25,7 +32,7 @@
 
 /* Text container */
 .image-uploader .upload-text {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     left: 0;
@@ -48,7 +55,7 @@
 
 /* Hide the text if there is at least one uploaded image */
 .image-uploader.has-files .upload-text {
-    display: none;
+    /*display: none;*/
 }
 
 /* Uploaded images container */
@@ -58,26 +65,32 @@
 }
 
 .image-uploader .uploaded .uploaded-image {
-    display: inline-block;
-    width: calc(16.6666667% - 1rem);
-    padding-bottom: calc(16.6666667% - 1rem);
-    height: 0;
+    width: 100px;
+    height: 100px;
     position: relative;
-    margin: .5rem;
-    background: #f3f3f3;
-    cursor: default;
+    overflow: hidden;
+    margin-bottom: 1em;
+    float: left;
+    border-radius: 12px;
+    box-shadow: 0 0 4px 0 #888;
+    margin-right: 10px;
+    transition: all ease-in-out 0.5s;
+
 }
 
 .image-uploader .uploaded .uploaded-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 100px;
+    left: 50%;
     position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: auto;
+    object-fit: cover;
 }
 
 /* Delete image button */
 .image-uploader .uploaded .uploaded-image .delete-image {
-    display: none;
+    opacity: 0;
     cursor: pointer;
     position: absolute;
     top: .2rem;
@@ -88,10 +101,11 @@
     background-color: rgba(0, 0, 0, .5);
     -webkit-appearance: none;
     border: none;
+    transition: all ease-in-out 0.5s;
 }
 
 .image-uploader .uploaded .uploaded-image:hover .delete-image {
-    display: block;
+    opacity: 1;
 }
 
 .image-uploader .uploaded .uploaded-image .delete-image i {
@@ -104,10 +118,10 @@
 }
 
 @media screen and (max-width: 1366px) {
-    .image-uploader .uploaded .uploaded-image {
+    /*.image-uploader .uploaded .uploaded-image {
         width: calc(20% - 1rem);
         padding-bottom: calc(20% - 1rem);
-    }
+    }*/
 }
 
 @media screen and (max-width: 992px) {

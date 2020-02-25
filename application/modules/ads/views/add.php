@@ -103,7 +103,7 @@
                                     <?php $expiry=array(
                                         0=>'Select Expiry Duration',15=>'Two Weeks',30=>'One Month',60=>'Two Months',90=>'Three Months',120=>'Four Months'
                                     );?>
-                                    <?php echo form_dropdown('expiry_day',$expiry,'',array('class'=>'form-control select-box')); ?>
+                                    <?php echo form_dropdown('expiryDay',$expiry,'',array('class'=>'form-control select-box')); ?>
                                     </select>
                                 </div>
                             </div>
@@ -139,28 +139,28 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    State
+                                    Zone
                                     <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
-                                    <select class="form-control select-box">
-                                        <option value="0">Select State</option>
-                                        <option value="1">California</option>
-                                        <option value="2">Florida</option>
-                                        <option value="3">Hawaii</option>
-                                        <option value="4">Indiana</option>
-                                        <option value="5">Kansas</option>
-                                        <option value="6">Michigan</option>
-                                        <option value="7">New Jersey</option>
-                                        <option value="8">New Mexico</option>
-                                        <option value="9">New York</option>
-                                        <option value="10">Pennsylvania</option>
-                                        <option value="11">Texas</option>
-                                        <option value="12">Washington</option>
-                                        <option value="13">Wyoming</option>
-                                    </select>
+                                    <?php $zones =array('Select Your Zone','Mechi','Koshi','Sagarmatha','Janakpur','Bagmati','Narayani','Gandaki','Lumbini','Dhaulagiri','Rapti','Karnali','Bheri','Seti','Mahakali' ); ?>
+                                                    
+                                    <?php echo form_dropdown('zone',$zones,'',array('class'=>'form-control select-box')); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label class="control-label">
+                                    District
+                                    <span>*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <?php echo form_input(array('name'=>'district','class'=>'form-control','type'=>'text','placeholder'=>'Your District ...')); ?>
                                 </div>
                             </div>
                         </div>
@@ -168,39 +168,11 @@
                             <div class="col-sm-3">
                                 <label class="control-label">
                                     City
-                                    <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
-                                    <select class="form-control select-box">
-                                        <option value="0">Select City</option>
-                                        <option value="1">Los Angeles</option>
-                                        <option value="2">LAX/LA Beaches</option>
-                                        <option value="3">San Diego</option>
-                                        <option value="4">San Jose</option>
-                                        <option value="5">San Francisco</option>
-                                        <option value="6">Fresno</option>
-                                        <option value="7">Sacramento</option>
-                                        <option value="8">Oakland</option>
-                                        <option value="9">Bakersfield</option>
-                                        <option value="10">Riverside</option>
-                                        <option value="11">Eureka</option>
-                                        <option value="12">Death Valley</option>
-                                        <option value="12">Mammoth Lakes</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <label class="control-label">
-                                    Zip Code
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <input type="text" value="201301" class="form-control" name="zipcode" id="post-zip">
+                                    <?php echo form_input(array('name'=>'city','type'=>'text','class'=>'form-control','placeholder'=>'Your City ...')); ?>
                                 </div>
                             </div>
                         </div>
@@ -212,43 +184,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
-                                    <textarea name="address" class="form-control textarea" id="address" cols="30" rows="2">Melbourne</textarea>
+                                    <textarea name="address" class="form-control textarea" cols="30" rows="2" placeholder="Your Address ..."></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Phone
+                                    Contact Number
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
-                                    <input type="text" value="09988434436" class="form-control" name="phone" id="phone">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <label class="control-label">
-                                    Whatsapp Number
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <input type="text" value="09985434436" class="form-control" name="whatsapp" id="whatsapp">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <label class="control-label">
-                                    Email
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <div class="form-group">
-                                    <input type="email" value="radiustheme@gmail.com" class="form-control" name="email" id="email">
+                                    <input type="text" class="form-control" name="phone" placeholder="Your Contact Number ...">
                                 </div>
                             </div>
                         </div>

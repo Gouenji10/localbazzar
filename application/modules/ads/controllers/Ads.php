@@ -41,18 +41,56 @@ class Ads extends Front_Controller
 	}
 
 	public function saveAd(){
-		// Count total files
-		$countfiles = count($_FILES['images']['name']);
-		// Looping all files
-		for($i=0;$i<$countfiles;$i++){
-			if(!empty($_FILES['images']['name'][$i])){
-				$file_name = $_FILES['images']['name'][$i];
-				$tmp = explode('.', $file_name);
-				$type = end($tmp);
-			    $base64 = 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents($_FILES["images"]["tmp_name"][$i]));
-				echo "<img src=".$base64." style='width:50%;'>";
+
+		print_r($this->input->post());
+		exit();
+
+
+
+
+		if($this->input->is_ajax_request()){
+			$this->form_validation->set_rules('categories','Categories','required');
+			$this->form_validation->set_rules('subCategory','Sub Categories','required');
+			$this->form_validation->set_rules('Title','Title','required');
+			$this->form_validation->set_rules('expiryDay','Expiry Duration','required');
+			$this->form_validation->set_rules('price','Price','required');
+			$this->form_validation->set_rules('zone','Zone','required');
+			$this->form_validation->set_rules('city','City','required');
+			$this->form_validation->set_rules('address','Address','required');
+			$this->form_validation->set_rules('phone','Phone','required');
+
+			if($this->form_validation->run()==true){
+				// for images
+				$countfiles = count($_FILES['images']['name']);
+				$images=array();
+				for($i=0;$i<$countfiles;$i++){
+					if(!empty($_FILES['images']['name'][$i])){
+						$file_name = $_FILES['images']['name'][$i];
+						$tmp = explode('.', $file_name);
+						$type = end($tmp);
+					    $base64 = 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents($_FILES["images"]["tmp_name"][$i]));
+						$images[]=$base64;
+					}
+				}
+				$adsdata=array(
+					'title'=>$this->input->post('title'),
+					'postDate'=>date("Y-m-d"),	
+					'expiryDay'=>$this->input->post('expiryDay'),
+					'description'=>$this->input->post('description'),
+					'category'=>$this->input->post('category'),
+					'subCategory'=>$this->input->post('subCategory'),
+					'price'=>$this->input->post('price'),
+					'details'=> serialize($this->input->post()),
+				);
+			}else{
+				echo validation_errors();
 			}
 		}
+
+
+
+
+		
 	}
 
 	public function listingFilter(){

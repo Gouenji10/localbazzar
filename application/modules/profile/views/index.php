@@ -596,23 +596,9 @@
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="form-group">
-                                                    <select class="form-control select-box" name="zone">
-                                                        <option value="">Select Your Zone</option>
-                                                        <option value="Mechi" <?php echo $userMeta['zone']=='Mechi'?'selected':'';?>>Mechi</option>
-                                                        <option value="Koshi" <?php echo $userMeta['zone']=='Koshi'?'selected':'';?>>Koshi</option>
-                                                        <option value="Sagarmatha" <?php echo $userMeta['zone']=='Sagarmatha'?'selected':'';?>>Sagarmatha</option>
-                                                        <option value="Janakpur" <?php echo $userMeta['zone']=='Janakpur'?'selected':'';?>>Janakpur</option>
-                                                        <option value="Bagmati" <?php echo $userMeta['zone']=='Bagmati'?'selected':'';?>>Bagmati</option>
-                                                        <option value="Narayani" <?php echo $userMeta['zone']=='Narayani'?'selected':'';?>>Narayani</option>
-                                                        <option value="Gandaki" <?php echo $userMeta['zone']=='Gandaki'?'selected':'';?>>Gandaki</option>
-                                                        <option value="Lumbini" <?php echo $userMeta['zone']=='Lumbini'?'selected':'';?>>Lumbini</option>
-                                                        <option value="Dhaulagiri" <?php echo $userMeta['zone']=='Dhaulagiri'?'selected':'';?>>Dhaulagiri</option>
-                                                        <option value="Rapti" <?php echo $userMeta['zone']=='Rapti'?'selected':'';?>>Rapti</option>
-                                                        <option value="Karnali" <?php echo $userMeta['zone']=='Karnali'?'selected':'';?>>Karnali</option>
-                                                        <option value="Bheri" <?php echo $userMeta['zone']=='Bheri'?'selected':'';?>>Bheri</option>
-                                                        <option value="Seti" <?php echo $userMeta['zone']=='Seti'?'selected':'';?>>Seti</option>
-                                                        <option value="Mahakali" <?php echo $userMeta['zone']=='Mahakali'?'selected':'';?>>Mahakali</option>
-                                                    </select>
+                                                    <?php $zones =array('Select Your Zone','Mechi','Koshi','Sagarmatha','Janakpur','Bagmati','Narayani','Gandaki','Lumbini','Dhaulagiri','Rapti','Karnali','Bheri','Seti','Mahakali' ); ?>
+                                                    
+                                                    <?php echo form_dropdown('zone',$zones,$userMeta['zone'],array('class'=>'form-control select-box')); ?>
                                                 </div>
                                             </div>
                                         </div>
