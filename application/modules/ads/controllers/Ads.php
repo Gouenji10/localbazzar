@@ -42,16 +42,10 @@ class Ads extends Front_Controller
 
 	public function saveAd(){
 
-		print_r($this->input->post());
-		exit();
-
-
-
-
 		if($this->input->is_ajax_request()){
-			$this->form_validation->set_rules('categories','Categories','required');
-			$this->form_validation->set_rules('subCategory','Sub Categories','required');
-			$this->form_validation->set_rules('Title','Title','required');
+			$this->form_validation->set_rules('category','Categories','required');
+			$this->form_validation->set_rules('sub_category','Sub Categories','required');
+			$this->form_validation->set_rules('title','Title','required');
 			$this->form_validation->set_rules('expiryDay','Expiry Duration','required');
 			$this->form_validation->set_rules('price','Price','required');
 			$this->form_validation->set_rules('zone','Zone','required');
@@ -72,25 +66,33 @@ class Ads extends Front_Controller
 						$images[]=$base64;
 					}
 				}
-				$adsdata=array(
-					'title'=>$this->input->post('title'),
-					'postDate'=>date("Y-m-d"),	
-					'expiryDay'=>$this->input->post('expiryDay'),
-					'description'=>$this->input->post('description'),
+				$form_data=$this->input->post();
+				$form_data=array_push($form_data,$images);
+				$data=array(
 					'category'=>$this->input->post('category'),
-					'subCategory'=>$this->input->post('subCategory'),
-					'price'=>$this->input->post('price'),
-					'details'=> serialize($this->input->post()),
+					'sub_category'=>$this->input->post('sub_category'),
+					'title'=>$this->input->post('title') ,
+					'price_type'=>$this->input->post('priceType') ,
+					'price'=>$this->input->post('price') ,
+					'zone'=> $this->input->post('zone'),
+					'city'=>$this->input->post('city') ,
+					'details'=> serialize($form_data)
 				);
+				if($this->ads_m->insert(config('tbl_ads'),$data)){
+					echo"success";
+					exit();
+				}else{
+					echo "errors";
+					exit();
+				}
+				
 			}else{
 				echo validation_errors();
+				exit();
 			}
-		}
-
-
-
-
-		
+			exit();
+		}		
+		exit();
 	}
 
 	public function listingFilter(){

@@ -160,12 +160,12 @@ $(document).ready(function() {
 
     // form submit
 
-    // $('.addListing').find('#adsForm').on('submit',function(){
-    // 	$('#siteloaderWrapper').addClass('show');
-    // 	var action =$(this).attr('action');
-    // 	$.post(action,$(this).serialize(),function(response){
-
-    // 	});
-    // 	return false;
-    // });
+    $('.addListing').find('#adsForm').on('submit',function(){
+    	$('#siteloaderWrapper').addClass('show');
+    	var action =$(this).attr('action');
+    	$.post(action,$(this).serialize(),function(response){
+    		// slow alert message and redirect them to the ad detail page get id an
+    	});
+    	return false;
+    });
 });

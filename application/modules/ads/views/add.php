@@ -41,7 +41,7 @@
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <?php array_unshift($categories,'Select a Category'); ?>
-                                    <?php echo form_dropdown('categories',$categories,'',array('class'=>'form-control select-box','id'=>'categories')); ?>
+                                    <?php echo form_dropdown('category',$categories,'',array('class'=>'form-control select-box','id'=>'categories')); ?>
                                 </div>
                             </div>
                         </div>
