@@ -109,7 +109,7 @@ class Ads extends Front_Controller
 	}
 
 	public function getSubCategories($id){
-		$getSubCategories = $this->ads_m->getBy(config('tbl_subCategories'),array('categoryId'=>$id));
+		$getSubCategories = $this->ads_m->getBy(config('tbl_sub_categories'),array('category_id'=>$id));
 		$subCategory=array();
 		foreach($getSubCategories as $subCategories){
 			$subCategory[$subCategories->id] = $subCategories->name;
@@ -120,7 +120,7 @@ class Ads extends Front_Controller
 	}
 	
 	public function getFields($id){
-		$getSlug=$this->ads_m->getOne(config('tbl_subCategories'),array('id'=>$id));
+		$getSlug=$this->ads_m->getOne(config('tbl_sub_categories'),array('id'=>$id));
 		$data = $this->load->view('templates/'.$getSlug['slug'],array(),TRUE);
 		echo $data;
 		exit();

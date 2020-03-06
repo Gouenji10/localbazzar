@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 27, 2020 at 06:18 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Host: localhost:3306
+-- Generation Time: Mar 06, 2020 at 07:36 AM
+-- Server version: 10.1.44-MariaDB-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,16 +17,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `localBazaar`
+-- Database: `local_bazaar`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ads`
+-- Table structure for table `all_ads`
 --
 
-CREATE TABLE `ads` (
+CREATE TABLE `all_ads` (
   `id` int(10) NOT NULL,
   `category` int(10) NOT NULL,
   `sub_category` int(10) NOT NULL,
@@ -39,24 +37,6 @@ CREATE TABLE `ads` (
   `city` varchar(256) NOT NULL,
   `details` longtext NOT NULL,
   `expiry_duration` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ads`
---
-
-INSERT INTO `ads` (`id`, `category`, `sub_category`, `title`, `price_type`, `price`, `zone`, `city`, `details`, `expiry_duration`) VALUES
-(1, 2, 1, 'How do native speakers tell I’m foreign based on my English alone?', 1, '150000', '13', 'Butwal', 'i:30;', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `adType`
---
-
-CREATE TABLE `adType` (
-  `id` int(10) NOT NULL,
-  `name` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -129,49 +109,25 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subCategories`
+-- Table structure for table `sub_categories`
 --
 
-CREATE TABLE `subCategories` (
+CREATE TABLE `sub_categories` (
   `id` int(11) NOT NULL,
-  `categoryId` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `name` varchar(256) NOT NULL,
   `slug` varchar(256) NOT NULL,
   `icon` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `subCategories`
+-- Dumping data for table `sub_categories`
 --
 
-INSERT INTO `subCategories` (`id`, `categoryId`, `name`, `slug`, `icon`) VALUES
+INSERT INTO `sub_categories` (`id`, `category_id`, `name`, `slug`, `icon`) VALUES
 (1, 2, 'Cars', 'cars', ''),
 (2, 2, 'Motorcycle/Scooty', 'motorcycle', ''),
 (3, 2, 'Parts & Accessories', 'parts-accessories', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `userMeta`
---
-
-CREATE TABLE `userMeta` (
-  `id` int(10) NOT NULL,
-  `user_id` int(10) NOT NULL,
-  `zone` varchar(256) NOT NULL,
-  `district` varchar(256) NOT NULL,
-  `address` varchar(256) NOT NULL,
-  `city` varchar(256) NOT NULL,
-  `facebook` text NOT NULL,
-  `twitter` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `userMeta`
---
-
-INSERT INTO `userMeta` (`id`, `user_id`, `zone`, `district`, `address`, `city`, `facebook`, `twitter`) VALUES
-(1, 11, '8', 'Rupandehi', 'Pargatinagar-13', 'Butwal', 'https://www.facebook.com/profile.php?id=100009750247087', 'https://www.twitter.com/Gouenji10');
 
 -- --------------------------------------------------------
 
@@ -207,8 +163,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `status`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$nZ0svno2u/GYFcTeDMHi6ulfvC1.5uOGycPgg7db7q3FKXpqQmsEm', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1581485230, 1, 'Admin', 'istrator', 'ADMIN', '0', ''),
-(11, '::1', 'sanjay@pcsoftnepal.com', '$2y$10$Mh3wQeWbINoPQMmPQBiveuO2MgfnmQXkVTrGikJmXxhTOna/zLWsG', 'sanjay@pcsoftnepal.com', NULL, '848169', NULL, NULL, NULL, NULL, NULL, 1581268095, 1582558794, 1, 'Sanjay', 'Chaudhary', NULL, '9779864573650', 'verified');
+(1, '127.0.0.1', 'administrator', '$2y$12$nZ0svno2u/GYFcTeDMHi6ulfvC1.5uOGycPgg7db7q3FKXpqQmsEm', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1583342904, 1, 'Admin', 'istrator', 'ADMIN', '0', 'not_verified'),
+(12, '::1', 'sanjay@pcsoftnepal.com', '$2y$10$LIF8KBWhOnJt2bjkuwN8K.a6aC4Nv0ts0njgLucA0s7kuPjlBoxbq', 'sanjay@pcsoftnepal.com', NULL, '732398', NULL, NULL, NULL, NULL, NULL, 1583344127, 1583424607, 1, 'Sanjay', 'Chaudhary', NULL, '9864573650', 'not_verified');
 
 -- --------------------------------------------------------
 
@@ -229,22 +185,40 @@ CREATE TABLE `users_groups` (
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(12, 11, 2);
+(13, 12, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_meta`
+--
+
+CREATE TABLE `user_meta` (
+  `id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `zone` varchar(256) NOT NULL,
+  `district` varchar(256) NOT NULL,
+  `address` varchar(256) NOT NULL,
+  `city` varchar(256) NOT NULL,
+  `facebook` text NOT NULL,
+  `twitter` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_meta`
+--
+
+INSERT INTO `user_meta` (`id`, `user_id`, `zone`, `district`, `address`, `city`, `facebook`, `twitter`) VALUES
+(2, 12, '8', 'Nawalparasi', 'Ashnaiya - 07', 'Sunwal', '', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `ads`
+-- Indexes for table `all_ads`
 --
-ALTER TABLE `ads`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `adType`
---
-ALTER TABLE `adType`
+ALTER TABLE `all_ads`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -266,15 +240,9 @@ ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subCategories`
+-- Indexes for table `sub_categories`
 --
-ALTER TABLE `subCategories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `userMeta`
---
-ALTER TABLE `userMeta`
+ALTER TABLE `sub_categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -297,63 +265,55 @@ ALTER TABLE `users_groups`
   ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
 
 --
+-- Indexes for table `user_meta`
+--
+ALTER TABLE `user_meta`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `ads`
+-- AUTO_INCREMENT for table `all_ads`
 --
-ALTER TABLE `ads`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `adType`
---
-ALTER TABLE `adType`
+ALTER TABLE `all_ads`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `subCategories`
+-- AUTO_INCREMENT for table `sub_categories`
 --
-ALTER TABLE `subCategories`
+ALTER TABLE `sub_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `userMeta`
---
-ALTER TABLE `userMeta`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `user_meta`
+--
+ALTER TABLE `user_meta`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -364,7 +324,6 @@ ALTER TABLE `users_groups`
 ALTER TABLE `users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

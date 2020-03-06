@@ -1,6 +1,13 @@
 var siteUrl='http://localhost/localbazzar/';
 $(document).ready(function() {
-	$('#showFilePanel').click(function(event) {
+
+	$.validate({
+		modules : 'security',
+		// onModulesLoaded : function() {
+		// 	$('#country').suggestCountry();
+		// }
+	});
+	$('#show_file_panel').click(function(event) {
 		if ($('.login-container').hasClass('dismiss')) {
 			$('.login-container').removeClass('dismiss').addClass('selected').show();
 			$('.login-wrapper').addClass('show').show();
@@ -8,7 +15,7 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 
-	$('.closeFilePanel').click(function(event) {
+	$('.close_file_panel').click(function(event) {
 		if ($('.login-container').hasClass('selected')) {
 			$('.login-container').removeClass('selected').addClass('dismiss');
 			$('.login-wrapper').removeClass('show');
@@ -24,27 +31,27 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 
-	$('#openRegisterForm').on('click',function(){
-		$('#login-form').addClass('hide');
-		$('#registerForm').addClass('show');
+	$('#open_register_form').on('click',function(){
+		$('#login_box').addClass('hide');
+		$('#register_box').addClass('show');
 		event.preventDefault();
 	});
-	$('#homeRegisterButton').click(function() {
+	$('#home_register_button').click(function() {
 		if ($('.login-container').hasClass('dismiss')) {
 			$('.login-container').removeClass('dismiss').addClass('selected').show();
-			$('#login-form').addClass('hide');
-			$('#registerForm').addClass('show');
+			$('#login_box').addClass('hide');
+			$('#register_box').addClass('show');
 			$('.login-wrapper').addClass('show').show();
 		}
 		event.preventDefault();
 	});
 
-	$('#openLoginForm').on('click',function(){
-		$('#registerForm').removeClass('show');
-		$('#login-form').removeClass('hide');
+	$('#open_login_form').on('click',function(){
+		$('#register_box').removeClass('show');
+		$('#login_box').removeClass('hide');
 		event.preventDefault();
 	});
-	
+
 
 
     $('.scrollup.back-top').on("click",function(){
@@ -53,7 +60,7 @@ $(document).ready(function() {
 	});
 
     //login
-    $('form#scLoginForm').on('submit',function(){
+    $('form#login_form').on('submit',function(){
     	var action=$(this).attr('action');
     	$('#siteloaderWrapper').addClass('show');
     	$.post(action,$(this).serialize(),function(response){
@@ -73,23 +80,23 @@ $(document).ready(function() {
 					showConfirmButton: false,
 					timer: 2000
 				});
-			}		
+			}
 		});
 		$('#siteloaderWrapper').removeClass('show');
     	return false;
     });
 
     // Register
-    $('.login-container').on('submit','form#scRegisterForm',function(){
-    	$('#siteloaderWrapper').addClass('show');    	
-    	var action=$(this).attr('action');    	
-    	var username=$(this).find('input[name=name]').val();		
-		username=username.split(' ');		
-		var first_name=username['0'];		
-		var last_name=username['1'];		
-		var email=$(this).find('input[name=email]').val();		
+    $('.login-container').on('submit','form#register_form',function(){
+    	$('#siteloaderWrapper').addClass('show');
+    	var action=$(this).attr('action');
+    	var username=$(this).find('input[name=name]').val();
+		username=username.split(' ');
+		var first_name=username['0'];
+		var last_name=username['1'];
+		var email=$(this).find('input[name=email]').val();
 		var password=$(this).find('input[name=password]').val();
-		var phone=$(this).find('input[name=phone]').val();		
+		var phone=$(this).find('input[name=phone]').val();
 		$.post(action,{'first_name':first_name,'last_name':last_name,'email':email,'password':password,'password_confirm':password,'phone':phone},function(response){
 			if(response == 'success'){
 				swal.fire({
@@ -101,7 +108,7 @@ $(document).ready(function() {
 				location.reload(true);
 			}else{
 				swal.fire({
-					title:"Hmmm...?`",
+					title:"Hmmm...?",
 					html:response,
 					icon: "error",
 					showConfirmButton: false,
@@ -134,15 +141,15 @@ $(document).ready(function() {
 					icon: "error",
 					showConfirmButton: false,
 					// timer: 2000
-				});	
+				});
     		}
-    		
+
     	});
     	$('#siteloaderWrapper').removeClass('show');
     	return false;
     });
 
-    // for ad Adding 
+    // for ad Adding
 
     $('.addListing').find('select#categories').on('change',function(){
     	var val= $(this).children("option:selected").val();
@@ -169,3 +176,10 @@ $(document).ready(function() {
     	return false;
     });
 });
+
+function is_number(evt){
+	var ch = String.fromCharCode(evt.which);
+	if(!(/[0-9]/.test(ch))){
+		evt.preventDefault();
+	}
+}

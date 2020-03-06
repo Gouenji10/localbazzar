@@ -1,3 +1,3 @@
 <?php 
 $config['tbl_users']="users";
-$config['tbl_userMeta']="userMeta";
+$config['tbl_user_meta']="user_meta";

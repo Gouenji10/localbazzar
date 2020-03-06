@@ -1,6 +1,6 @@
 <?php
 $config['tbl_categories']='categories';
-$config['tbl_subCategories']='subCategories';
-$config['tbl_ads']='ads';
+$config['tbl_sub_categories']='sub_categories';
+$config['tbl_ads']='all_ads';
 
 

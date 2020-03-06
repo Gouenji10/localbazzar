@@ -375,7 +375,7 @@
 		                </ul>
 		            </div>
 		            <div class="item-btn">
-		                <a href="#" class="btn-fill-lg bgLight color-dark" id="homeRegisterButton">Register Now</a>
+		                <a href="#" class="btn-fill-lg bgLight color-dark" id="home_register_button">Register Now</a>
 		            </div>
 		        </div>
 		    </div>

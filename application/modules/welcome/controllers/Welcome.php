@@ -18,7 +18,7 @@ class Welcome extends Front_Controller
 			}
 			else{
 				$id=$this->session->userdata('user_id');
-				$this->checkUserMeta($id);
+				$this->check_user_meta($id);
 			}
 		}
 		$this->template
@@ -29,7 +29,7 @@ class Welcome extends Front_Controller
 		
 	}
 
-	public function checkUserMeta($id){
+	public function check_user_meta($id){
 		$userData=$this->welcome_m->getOne(config('users'),array('id'=>$id));
 		if($userData){
 			if($userData['status']=='not_verified'){
@@ -61,7 +61,7 @@ class Welcome extends Front_Controller
 						}
 					}); 
 
-				}, 3000);
+				}, 10000);
 				
 			});
 		</script>

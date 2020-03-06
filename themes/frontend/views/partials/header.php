@@ -18,6 +18,8 @@
     <!-- Owl Carousel CSS -->
     <?php echo css('owl.carousel.min.css');?>
     <?php echo css('owl.theme.default.min.css');?>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"
+    rel="stylesheet" type="text/css" />
     <!-- Site Stylesheet -->
     <?php echo css('app.css');?>
     <?php apply_hook('add_css');?>
@@ -70,7 +72,7 @@
                             <ul>
                                 <?php if(!$this->ion_auth->logged_in()): ?>
                                 <li class="header-login-icon">
-                                    <a href="#"class="color-light login-popup" data-toggle="tooltip" data-placement="top" title="" data-original-title="Login/Register" id="showFilePanel">
+                                    <a href="#"class="color-light login-popup" data-toggle="tooltip" data-placement="top" title="" data-original-title="Login/Register" id="show_file_panel">
                                         <i class="fa fa-user"></i>
                                     </a>
                                 </li>
@@ -98,26 +100,26 @@
     </header>
     <!-- Sign In Popup -->
     <div class="login-wrapper"></div>
-    <div class="login-container dismiss myaccount-login-form">        
+    <div class="login-container dismiss myaccount-login-form">
         <!-- login form -->
-        <div class="form-box" id="login-form">
+        <div class="form-box" id="login_box">
             <div class="login_top">
                 <h3 class="item-title">My Account</h3>
                 <div class="close-cart">
-                    <a href="#" class="closeFilePanel" >
+                    <a href="#" class="close_file_panel" >
                         <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>    
+                    </a>
                 </div>
-                
+
             </div>
-            <?php echo form_open('auth/login',['id'=>'scLoginForm']) ?>
+            <?php echo form_open('auth/login',['id'=>'login_form']) ?>
                 <div class="form-group">
                     <label>E-mail:</label>
-                    <input type="email" class="form-control" name="identity" id="login-username" placeholder="Enter Your Email">
+                    <?php echo form_input(array('type'=>'email','class'=>'form-control','name'=>'identity','placeholder'=>'Enter Your Email','autocomplete'=>'off','data-validation'=>'email')); ?>
                 </div>
                 <div class="form-group">
                     <label>Password:</label>
-                    <input type="password" class="form-control" name="password" id="login-password" placeholder="Enter Your Password">
+                    <?php echo form_input(array('type'=>'password','class'=>'form-control','name'=>'password','placeholder'=>'Enter Your Password','autocomplete'=>'off'/*,'data-validation'=>'strength','data-validation-strength'=>'2' */)); ?>
                 </div>
                 <div class="form-group">
                     <a href="#" class="forgot-password">Forgot your password?</a>
@@ -125,47 +127,47 @@
                 <div class="form-group">
                     <input type="submit" class="submit-btn" value="Login">
                 </div>
-                
+
                 <div class="form-group text-center">
-                    <a href="#" class="forgot-password" id="openRegisterForm">New To Store? Signup Now</a>
+                    <a href="#" class="forgot-password" id="open_register_form">New To Store? Signup Now</a>
                 </div>
             <?php echo form_close();?>
         </div>
         <!--end of login form -->
         <!-- Register form -->
-        <div class="form-box" id="registerForm">
+        <div class="form-box" id="register_box">
             <div class="login_top">
                 <h3 class="item-title">Create Account</h3>
                 <div class="close-cart">
-                    <a href="#" class="closeFilePanel" >
+                    <a href="#" class="close_file_panel" >
                         <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>    
+                    </a>
                 </div>
-                
+
             </div>
-            <?php echo form_open('auth/create_user',['id'=>'scRegisterForm']) ?>
+            <?php echo form_open('auth/create_user',['id'=>'register_form']) ?>
                 <div class="form-group">
                     <label>Full Name:</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter Your Full Name">
+                    <?php echo form_input(array('type'=>'text','class'=>'form-control','name'=>'name','placeholder'=>'Enter Your Full Name','autocomplete'=>'off','data-validation'=>'custom','data-validation-regexp'=>'^[A-Z a-z]+$','data-validation-error-msg'=>'Please enter your full name')); ?>
                 </div>
                 <div class="form-group">
                     <label>E-mail:</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter Your Email">
+                    <?php echo form_input(array('type'=>'email','class'=>'form-control','name'=>'email','placeholder'=>'Enter Your Email','autocomplete'=>'off','data-validation'=>'email')); ?>
                 </div>
                 <div class="form-group">
                     <label>Phone Number:</label>
-                    <input type="text" class="form-control" name="phone" placeholder="Enter Your Phone Number">
+                    <?php echo form_input(array('type'=>'text','class'=>'form-control','name'=>'phone','placeholder'=>'Enter Your Phone Number','data-validation'=>'length','data-validation-length'=>'min10','data-validation-error-msg'=>'Please check your phone number','onkeypress'=>'is_number(event)')) ?>
                 </div>
                 <div class="form-group">
                     <label>Password:</label>
-                    <input type="password" class="form-control" name="password" placeholder="Enter Your Password">
+                    <?php echo form_input(array('type'=>'password','class'=>'form-control','name'=>'password','placeholder'=>'Enter Your Password','autocomplete'=>'off','data-validation'=>'strength','data-validation-strength'=>'2','data-validation-error-msg'=>'Please make sure to use strong password')); ?>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="submit-btn" value="Register">
                 </div>
-                
+
                 <div class="form-group text-center">
-                    <a href="#" class="forgot-password" id="openLoginForm">Have an Account? Login</a>
+                    <a href="#" class="forgot-password" id="open_login_form">Have an Account? Login</a>
                 </div>
             <?php echo form_close();?>
         </div>

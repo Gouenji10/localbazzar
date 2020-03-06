@@ -18,7 +18,7 @@ class Profile extends Front_Controller
 	public function index(){
 		$id=$this->session->userdata('user_id');
 		$data=$this->profile_m->getOne(config('users'),array('id'=>$id));
-		$metaData=$this->profile_m->getOne(config('tbl_userMeta'),array('user_id'=>$id));
+		$metaData=$this->profile_m->getOne(config('tbl_user_meta'),array('user_id'=>$id));
 		$this->template
 		->set('title','Dashboard')
 		->set_layout('homepage')
@@ -53,14 +53,14 @@ class Profile extends Front_Controller
 					'facebook'=>$this->input->post('facebookUrl'),
 					'twitter'=>$this->input->post('twitterUrl')
 				);
-				if($this->profile_m->getOne(config('tbl_userMeta'),array('user_id'=>$id))){
+				if($this->profile_m->getOne(config('tbl_user_meta'),array('user_id'=>$id))){
 					
 					if( $this->profile_m->update(config('tbl_users'),$data,array('id'=>$id)) && $this->profile_m->update(config('tbl_userMeta'),$metaData,array('user_id'=>$id))){
 						echo "success";
 						exit();
 					}
 				}else{
-					if( $this->profile_m->update(config('tbl_users'),$data,array('id'=>$id)) && $this->profile_m->insert(config('tbl_userMeta'),$metaData)){
+					if( $this->profile_m->update(config('tbl_users'),$data,array('id'=>$id)) && $this->profile_m->insert(config('tbl_user_meta'),$metaData)){
 						echo 'success';
 						exit();
 					}

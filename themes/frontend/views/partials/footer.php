@@ -98,6 +98,7 @@
 
 
 <?php echo js('jquery.min.js'); ?>
+<?php echo js('jquery.form-validator.min.js'); ?>
 <?php echo js('bootstrap.min.js'); ?>
 <?php echo js('jquery.magnific-popup.min.js'); ?>
 <?php echo js('sweetalert.min.js'); ?>

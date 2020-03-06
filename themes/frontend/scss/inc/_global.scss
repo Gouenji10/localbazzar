@@ -59,7 +59,7 @@ input:focus,select:focus,textarea:focus,button:focus{
 		}
 	}
 	
-	#login-form{
+	#login_box{
 		height:auto;
 		transition: all ease-in-out 0.5s;
 		&.hide{
@@ -67,14 +67,14 @@ input:focus,select:focus,textarea:focus,button:focus{
 		    opacity: 0;
 		    visibility: visible;
 		}
-		#scLoginForm{
+		#login_form{
 			padding: 16px;
 			.submit-btn{
 				width: 100%;
 			}
 		}
 	}
-	#registerForm{
+	#register_box{
 		opacity: 0;
 		visibility: hidden;
 		transition:all ease-in-out 0.5s;
@@ -82,7 +82,7 @@ input:focus,select:focus,textarea:focus,button:focus{
 			opacity: 1;
 			visibility: visible;
 		}
-		#scRegisterForm{
+		#register_form{
 			padding: 16px;
 			.submit-btn{
 				width: 100%;
