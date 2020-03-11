@@ -1,16 +1,15 @@
-<?php 
+<?php
 
 /**
- * 
+ *
  */
 class Ads extends Front_Controller
 {
-	
 	function __construct()
 	{
 		parent::__construct();
-		add_hook('add_css','ads_js',$this,'ads_css',array());
-		add_hook('add_js','ads_js',$this,'ads_js',array());
+		add_hook('additional_style','ads_js',$this,'ads_css',array());
+		add_hook('additional_script','ads_js',$this,'ads_js',array());
 		add_hook('filters','listingFilter',$this,'listingFilter',array());
 		$this->load->model('ads_m');
 	}
@@ -27,10 +26,24 @@ class Ads extends Front_Controller
 		->set('title','title here')
 		->set_layout('homepage')
 		->set('page','singleListing')
-		->build('single');	
+		->build('single');
 	}
 
 	public function addAd(){
+		$module_welcome = Modules::load('welcome');
+		if(! $this->ion_auth->logged_in()){
+			$alert_data=serialize(array(
+				'title'=>'Hmm..?',
+				'text'=>'Looks like you are not logged in.Please login to post your ad.',
+				'icon'=>'error',
+				'confirm_btn'=>'login Now',
+				'url'=>base_url(),
+				'time'=>1000
+			));
+			add_hook('alert_script','alert_function',$module_welcome,'alert_function',array('with_confirmation',$alert_data));
+		}else{
+			$module_welcome->check_user_status();
+		}
 		$categories=$this->getCategories();
 		$this->template
 		->set('title','title here')
@@ -85,13 +98,13 @@ class Ads extends Front_Controller
 					echo "errors";
 					exit();
 				}
-				
+
 			}else{
 				echo validation_errors();
 				exit();
 			}
 			exit();
-		}		
+		}
 		exit();
 	}
 
@@ -104,7 +117,7 @@ class Ads extends Front_Controller
     	$category=array();
 		foreach($getCategories as $categories){
 			$category[$categories->id] = $categories->name;
-		}		
+		}
     	return $category;
 	}
 
@@ -118,7 +131,7 @@ class Ads extends Front_Controller
 		echo $this->load->view('templates/subCategories',$data,TRUE);
 		exit();
 	}
-	
+
 	public function getFields($id){
 		$getSlug=$this->ads_m->getOne(config('tbl_sub_categories'),array('id'=>$id));
 		$data = $this->load->view('templates/'.$getSlug['slug'],array(),TRUE);
@@ -138,7 +151,7 @@ class Ads extends Front_Controller
 			    /*-------------------------------------
 			    Carousel slider initiation
 			    -------------------------------------*/
-			    $(".rc-carousel").each(function () 
+			    $(".rc-carousel").each(function ()
 			    {
 			        var carousel = $(this),
 			            loop = carousel.data("loop"),
@@ -264,7 +277,7 @@ class Ads extends Front_Controller
 				$('.input-images-1').imageUploader();
 			});
 		</script>
-		<?php 
+		<?php
 	}
 }
 

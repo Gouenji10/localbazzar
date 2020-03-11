@@ -102,8 +102,9 @@
 <?php echo js('bootstrap.min.js'); ?>
 <?php echo js('jquery.magnific-popup.min.js'); ?>
 <?php echo js('sweetalert.min.js'); ?>
-<?php apply_hook('add_js');?>
+<?php apply_hook('additional_script');?>
 <?php echo js('custom.js'); ?>
+<?php apply_hook('alert_script') ?>
 
 </body>
 </html>

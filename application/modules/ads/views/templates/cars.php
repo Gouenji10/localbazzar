@@ -2,7 +2,7 @@
     <div class="post-ad-title">
         <i class="fa fa-folder-open"></i>
         <h3 class="item-title">Product Information</h3>
-    </div>                        
+    </div>
     <div class="row">
         <div class="col-sm-3">
             <label class="control-label">
@@ -13,7 +13,7 @@
         <div class="col-sm-9">
             <div class="form-group">
                 <?php echo form_input(array('type'=>"text",'class'=>"form-control",'name'=>"price",'placeholder'=>'Price ...'));?>
-                
+
             </div>
         </div>
     </div>
@@ -128,7 +128,7 @@
                         </label>
                     </div>
                 <?php endforeach; ?>
-                
+
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                     <div class="form-check form-radio-btn">
                         <input class="form-check-input" type="radio" id="condition<?php echo $key;?>" name="condition">
                         <label class="form-check-label" for="condition<?php echo $key;?>">
-                             <?php echo $value; ?> 
+                             <?php echo $value; ?>
                         </label>
                     </div>
                 <?php endforeach; ?>
@@ -202,108 +202,5 @@
                 <?php endforeach;?>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <label class="control-label">
-                Home Delivery
-                <span>*</span>
-            </label>
-        </div>
-        <div class="col-sm-9">
-            <div class="form-group">
-                <?php $delivery =array('Yes','No'); ?>
-                <?php foreach ($delivery as $key => $value):?>
-                    <div class="form-check form-radio-btn">
-                        <input class="form-check-input" type="radio" id="delivery<?php echo $key;?>" name="delivery" value="new">
-                        <label class="form-check-label" for="delivery<?php echo $key;?>">
-                            <?php echo $value; ?>
-                        </label>
-                    </div>    
-                <?php endforeach;?>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <label class="control-label">
-                Delivery Area
-                <span>*</span>
-            </label>
-        </div>
-        <div class="col-sm-9">
-            <div class="form-group">
-                <?php $delivery_type =array('Within my Area','Within my City','Almost anywhere in Nepal'); ?>
-                <?php foreach ($delivery_type as $key => $value):?>
-                    <div class="form-check form-radio-btn">
-                        <input class="form-check-input" type="radio" id="deliveryType<?php echo $key;?>" name="deliveryType" value="new">
-                        <label class="form-check-label" for="deliveryType<?php echo $key;?>">
-                            <?php echo $value; ?>
-                        </label>
-                    </div>    
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <label class="control-label">
-                Delivery Charges
-                <span>*</span>
-            </label>
-        </div>
-        <div class="col-sm-9">
-            <div class="form-group">
-                <?php echo form_input(array('type'=>'text','class'=>'form-control','name'=>'deliveryCharge','placeholder'=>'Delivery Charge ...')) ?>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <label class="control-label">
-                Warranty Type
-                <span>*</span>
-            </label>
-        </div>
-        <div class="col-sm-9">
-            <div class="form-group">
-                <?php $warrantyType = array('Dealer/Shop','Manufacturer/Importer','No Warranty'); ?>
-                <?php foreach ($warrantyType as $key => $value):?>
-                    <div class="form-check form-radio-btn">
-                        <input class="form-check-input" type="radio" id="warrantyType<?php echo $key;?>" name="warrantyType" value="new">
-                        <label class="form-check-label" for="warrantyType<?php echo $key;?>">
-                            <?php echo $value; ?>
-                        </label>
-                    </div>    
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <label class="control-label">
-                Warranty Period
-                <span>*</span>
-            </label>
-        </div>
-        <div class="col-sm-9">
-            <div class="form-group">
-                <?php echo form_input(array('type'=>'text','class'=>'form-control','name'=>'warrantyPeriod','placeholder'=>'Warranty Period ...')) ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-3">
-            <label class="control-label">
-                Warranty Includes
-                <span>*</span>
-            </label>
-        </div>
-        <div class="col-sm-9">
-            <div class="form-group">
-                <?php echo form_input(array('type'=>'text','class'=>'form-control','name'=>'warrantyIncludes','placeholder'=>'Warranty Includes ...')) ?>
-            </div>
-        </div>
-    </div>
+    </div>    
 </div>

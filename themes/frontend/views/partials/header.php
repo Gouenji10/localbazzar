@@ -22,7 +22,7 @@
     rel="stylesheet" type="text/css" />
     <!-- Site Stylesheet -->
     <?php echo css('app.css');?>
-    <?php apply_hook('add_css');?>
+    <?php apply_hook('additional_style');?>
     <?php echo css('style.css');?>
 
     <!-- Google Web Fonts -->

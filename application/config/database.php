@@ -76,8 +76,8 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'admin',
-	'password' => '=@!#254tecmint',
+	'username' => 'root',
+	'password' => 'password',
 	'database' => 'local_bazaar',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

@@ -1,11 +1,45 @@
 var siteUrl='http://localhost/localbazzar/';
-$(document).ready(function() {
+function is_number(evt){
+	var ch = String.fromCharCode(evt.which);
+	if(!(/[0-9]/.test(ch))){
+		evt.preventDefault();
+	}
+}
+function alert_with_confirmation(data){
+	var alert_data=JSON.parse(data);
+	setTimeout(() => {
+		swal.fire({
+			title:alert_data.title,
+			text:alert_data.text,
+			icon:alert_data.icon,
+			showConfirmButton:true,
+			showCancelButton: true,
+			confirmButtonColor: '#f85c70',
+			cancelButtonColor: '#d33',
+			confirmButtonText:alert_data.confirm_btn
+		}).then((result) => {
+			if (result.value) {
+				window.location.href = alert_data.url;
+			}
+		});
 
+	},alert_data.time);
+}
+function alert_without_confirmation(title,text,icon){
+	swal.fire({
+		title:title,
+		html: text,
+		icon: icon,
+		showConfirmButton: false,
+		timer: 2000
+	});
+}
+
+
+
+$(document).ready(function() {
 	$.validate({
 		modules : 'security',
-		// onModulesLoaded : function() {
-		// 	$('#country').suggestCountry();
-		// }
 	});
 	$('#show_file_panel').click(function(event) {
 		if ($('.login-container').hasClass('dismiss')) {
@@ -51,35 +85,21 @@ $(document).ready(function() {
 		$('#login_box').removeClass('hide');
 		event.preventDefault();
 	});
-
-
-
     $('.scrollup.back-top').on("click",function(){
 	    $('html, body').animate({scrollTop:0}, 'slow');
         return false;
 	});
 
-    //login
+    // login
     $('form#login_form').on('submit',function(){
     	var action=$(this).attr('action');
     	$('#siteloaderWrapper').addClass('show');
     	$.post(action,$(this).serialize(),function(response){
 			if(response=='success'){
-				swal.fire({
-				  title: "Good job!",
-				  text: "Welcome Back!",
-				  icon: "success",
-				  showConfirmButton: false,
-				});
+				alert_without_confirmation('Good job!','Welcome Back!','success');
 				location.reload(true);
 			}else{
-				swal.fire({
-					title:"Hmmm...?",
-					html: response,
-					icon: "error",
-					showConfirmButton: false,
-					timer: 2000
-				});
+				alert_without_confirmation('Hmmm...?',response,'error');
 			}
 		});
 		$('#siteloaderWrapper').removeClass('show');
@@ -99,21 +119,10 @@ $(document).ready(function() {
 		var phone=$(this).find('input[name=phone]').val();
 		$.post(action,{'first_name':first_name,'last_name':last_name,'email':email,'password':password,'password_confirm':password,'phone':phone},function(response){
 			if(response == 'success'){
-				swal.fire({
-					title: "Good job!",
-					text: "Account Successfully Registered!",
-					icon: "success",
-					showConfirmButton: false,
-				});
+				alert_without_confirmation('Good job!','Account Successfully Registered!','success');
 				location.reload(true);
 			}else{
-				swal.fire({
-					title:"Hmmm...?",
-					html:response,
-					icon: "error",
-					showConfirmButton: false,
-					// timer: 2000
-				});
+				alert_without_confirmation('Hmmm...?',response,'error');
 			}
 		});
 		$('#siteloaderWrapper').removeClass('show');
@@ -127,23 +136,10 @@ $(document).ready(function() {
     	var id=$(this).data('userid');
     	$.post(action+id,$(this).serialize(),function(response){
     		if(response=='success'){
-				swal.fire({
-					title:"Good job!",
-					html:"Thank You for Updating Your Information.",
-					icon: "success",
-					showConfirmButton: false,
-					// timer: 2000
-				});
+					alert_without_confirmation('Good job!','Thank You for Updating Your Information.','success');
     		}else{
-    			swal.fire({
-					title:"Hmmm...?",
-					html:'Please Fill All The Details.',
-					icon: "error",
-					showConfirmButton: false,
-					// timer: 2000
-				});
+					alert_without_confirmation('Hmmm...?','Please Fill All The Details.','error')
     		}
-
     	});
     	$('#siteloaderWrapper').removeClass('show');
     	return false;
@@ -165,21 +161,17 @@ $(document).ready(function() {
     	});
     })
 
+
+
+
     // form submit
 
-    $('.addListing').find('#adsForm').on('submit',function(){
-    	$('#siteloaderWrapper').addClass('show');
-    	var action =$(this).attr('action');
-    	$.post(action,$(this).serialize(),function(response){
-    		// slow alert message and redirect them to the ad detail page get id an
-    	});
-    	return false;
-    });
+    // $('.addListing').find('#adsForm').on('submit',function(){
+    // 	$('#siteloaderWrapper').addClass('show');
+    // 	var action =$(this).attr('action');
+    // 	$.post(action,$(this).serialize(),function(response){
+    // 		// slow alert message and redirect them to the ad detail page get id an
+    // 	});
+    // 	return false;
+    // });
 });
-
-function is_number(evt){
-	var ch = String.fromCharCode(evt.which);
-	if(!(/[0-9]/.test(ch))){
-		evt.preventDefault();
-	}
-}
