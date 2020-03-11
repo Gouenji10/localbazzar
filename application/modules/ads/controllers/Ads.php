@@ -273,7 +273,6 @@ class Ads extends Front_Controller
 				        }
 				    }
 				});
-
 				$('.input-images-1').imageUploader();
 			});
 		</script>
