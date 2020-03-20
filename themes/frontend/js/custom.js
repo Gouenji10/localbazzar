@@ -16,7 +16,8 @@ function alert_with_confirmation(data){
 			showCancelButton: true,
 			confirmButtonColor: '#f85c70',
 			cancelButtonColor: '#d33',
-			confirmButtonText:alert_data.confirm_btn
+			confirmButtonText:alert_data.confirm_btn,
+			allowOutsideClick: false
 		}).then((result) => {
 			if (result.value) {
 				window.location.href = alert_data.url;
