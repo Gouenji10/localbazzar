@@ -42,150 +42,21 @@
             <h2 class="heading-title">Popular Categories</h2>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Home-4"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Properties</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Student-Hat2"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Jobs</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Smartphone-2"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Mobiles</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Dog"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Pets</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Car-3"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Cars</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Chair"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Furniture</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Headphones"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Appliances</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Motorcycle"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Bikes</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Bodybuilding"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Sports/Hobbies</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-T-Shirt"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Fashion</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Light-BulbLeaf"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Services</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="category-box-layout1">
-                    <a href="#">
-                        <div class="item-icon">
-                            <i class="im im-icon-Books-2"></i>
-                        </div>
-                        <div class="item-content">
-                            <h3 class="item-title">Books</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
+
+            <?php foreach($categories as $category): ?>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="category-box-layout1">
+                        <a href="#">
+                            <div class="item-icon">
+                                <i class="<?php echo $category->icon ;?>"></i>
+                            </div>
+                            <div class="item-content">
+                                <h3 class="item-title"><?php echo $category->name ?></h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>    
+            <?php endforeach ?>            
         </div>
     </div>
 </section>

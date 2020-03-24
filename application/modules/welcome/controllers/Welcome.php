@@ -19,10 +19,12 @@ class Welcome extends Front_Controller
 				$this->check_user_status();
 			}
 		}
+		$categories=$this->welcome_m->getAll(config('tbl_categories'));
 		$this->template
 		->set('title','Welcome')
 		->set_layout('homepage')
 		->set('page','home')
+		->set('categories',$categories)
 		->build('welcome_message');
 
 	}
